@@ -8,29 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var count = 0
+    @ObservedObject var counter = CounterModel()
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("カウント: \(count)")
+            Text("カウント: \(counter.count)")
                 .font(.largeTitle)
 
             HStack(spacing: 20) {
                 Button("-1") {
-                    count -= 1
+                    counter.decrement()
                 }
                 .buttonStyle(.borderedProminent)
 
                 Button("+1") {
-                    count += 1
+                    counter.increment()
                 }
                 .buttonStyle(.borderedProminent)
             }
 
             Button("リセット") {
-                count = 0
+                counter.reset()
             }
             .buttonStyle(.bordered)
+            
+            Divider()
+            
+            Text("履歴").font(.headline)
+            
+            ForEach(counter.history, id: \.self) { item in
+                Text(item)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
         }
         .padding()
     }
