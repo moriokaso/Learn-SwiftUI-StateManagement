@@ -8,12 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var count = 0
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 20) {
+            Text("カウント: \(count)")
+                .font(.largeTitle)
+
+            HStack(spacing: 20) {
+                Button("-1") {
+                    count -= 1
+                }
+                .buttonStyle(.borderedProminent)
+
+                Button("+1") {
+                    count += 1
+                }
+                .buttonStyle(.borderedProminent)
+            }
+
+            Button("リセット") {
+                count = 0
+            }
+            .buttonStyle(.bordered)
         }
         .padding()
     }
@@ -22,3 +39,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
