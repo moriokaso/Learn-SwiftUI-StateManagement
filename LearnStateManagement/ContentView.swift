@@ -8,39 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var counter = CounterModel()
+    @ObservedObject private var counter = CounterModel()
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("カウント: \(counter.count)")
+            Text("カウンターアプリ")
                 .font(.largeTitle)
-
-            HStack(spacing: 20) {
-                Button("-1") {
-                    counter.decrement()
-                }
-                .buttonStyle(.borderedProminent)
-
-                Button("+1") {
-                    counter.increment()
-                }
-                .buttonStyle(.borderedProminent)
-            }
-
-            Button("リセット") {
-                counter.reset()
-            }
-            .buttonStyle(.bordered)
+                .fontWeight(.bold)
+            
+            CounterDisplayView(counter: counter)
+            CounterControlsView(counter: counter)
             
             Divider()
             
-            Text("履歴").font(.headline)
+            Text("履歴")
+                .font(.headline)
             
-            ForEach(counter.history, id: \.self) { item in
-                Text(item)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+            ScrollView{
+                ForEach(counter.history, id: \.self) { item in
+                    Text(item)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.vertical, 2)
+                }
             }
+            .frame(height: 100)
         }
         .padding()
     }
@@ -49,4 +41,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
