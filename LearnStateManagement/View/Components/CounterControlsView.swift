@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CounterControlsView: View {
-    @ObservedObject var counter: CounterViewModel
+    var counter: CounterViewModel
     
     var body: some View {
         VStack(spacing: 15) {

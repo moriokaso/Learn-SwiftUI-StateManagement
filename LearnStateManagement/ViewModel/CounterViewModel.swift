@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Observation
 
-class CounterViewModel: ObservableObject {
-    @Published var count: Int = 0
-    @Published var history: [String] = []
+@Observable
+class CounterViewModel {
+    var count: Int = 0
+    var history: [String] = []
     
     func increment() {
         count += 1

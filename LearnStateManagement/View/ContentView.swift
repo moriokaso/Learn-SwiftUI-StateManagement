@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var counter = CounterViewModel()
+    @State private var counter = CounterViewModel()
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("All Views Rebuild")
+            Text("Target View Rebuild")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
