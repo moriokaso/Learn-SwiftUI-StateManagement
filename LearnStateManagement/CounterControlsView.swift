@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct CounterControlsView: View {
+struct OptimizedCounterControlsView: View {
     @ObservedObject var counter: CounterModel
     
     var body: some View {
         VStack(spacing: 15) {
-            Text("操作")
+            Text("最適化版 - 操作エリア")
                 .font(.headline)
             
             HStack(spacing: 20) {
@@ -33,7 +33,8 @@ struct CounterControlsView: View {
             }
         }
         .padding()
-        .background(Color.gray.opacity(0.1))
+        .randomBackground() // 🎨 再描画されると背景色が変わる
         .cornerRadius(10)
+        .debugRebuild("OptimizedCounterControlsView") // 🐛 再描画をログ出力
     }
 }
