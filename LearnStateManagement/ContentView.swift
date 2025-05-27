@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var counter = CounterModel()
+    
     var body: some View {
-        TabView {
-            NonOptimizedView()
-                .tabItem {
-                    Image(systemName: "tortoise")
-                    Text("非最適化")
-                }
+        VStack(spacing: 20) {
+            Text("全てのViewがリビルド")
+                .font(.largeTitle)
+                .fontWeight(.bold)
             
-            OptimizedView()
-                .tabItem {
-                    Image(systemName: "hare")
-                    Text("最適化")
-                }
+            CounterDisplayView(counter: counter)
+            CounterControlsView(counter: counter)
+            HistoryView(counter: counter)
         }
+        .padding()
     }
 }
 

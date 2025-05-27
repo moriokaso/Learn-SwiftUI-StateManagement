@@ -8,11 +8,6 @@
 import SwiftUI
 
 extension View {
-    func debugRebuild(_ label: String) -> some View {
-        let _ = print("🔄 \(label) が再描画されました - \(Date().formatted(.dateTime.hour().minute().second().secondFraction(.fractional(3))))")
-        return self
-    }
-    
     func randomBackground() -> some View {
         self.background(
             Color(

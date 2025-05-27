@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct OptimizedHistoryView: View {
+struct HistoryView: View {
     @ObservedObject var counter: CounterModel
     
     var body: some View {
         VStack {
-            Text("最適化版 - 履歴エリア")
+            Text("履歴エリア")
                 .font(.headline)
             
             ScrollView {
@@ -28,6 +28,5 @@ struct OptimizedHistoryView: View {
         .padding()
         .randomBackground() // 🎨 再描画されると背景色が変わる
         .cornerRadius(10)
-        .debugRebuild("OptimizedHistoryView") // 🐛 再描画をログ出力
     }
 }
