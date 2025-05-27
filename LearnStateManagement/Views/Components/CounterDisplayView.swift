@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CounterDisplayView: View {
-    @ObservedObject var counter: CounterModel
+    @ObservedObject var counter: CounterViewModel
     
     var body: some View {
         VStack {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CounterControlsView: View {
-    @ObservedObject var counter: CounterModel
+    @ObservedObject var counter: CounterViewModel
     
     var body: some View {
         VStack(spacing: 15) {
@@ -28,6 +28,18 @@ struct CounterControlsView: View {
                 
                 Button("リセット") {
                     counter.reset()
+                }
+                .buttonStyle(.bordered)
+            }
+            
+            HStack(spacing: 20) {
+                Button("Count Only -1") {
+                    counter.decrementCountOnly()
+                }
+                .buttonStyle(.bordered)
+                
+                Button("Count Only +1") {
+                    counter.incrementCountOnly()
                 }
                 .buttonStyle(.bordered)
             }

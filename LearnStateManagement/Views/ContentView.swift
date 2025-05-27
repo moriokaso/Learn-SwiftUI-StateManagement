@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var counter = CounterModel()
+    @StateObject private var counter = CounterViewModel()
     
     var body: some View {
         VStack(spacing: 20) {
