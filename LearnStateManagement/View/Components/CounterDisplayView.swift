@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct CounterDisplayView: View {
-    @ObservedObject var counter: CounterViewModel
+    @ObservedObject var state: CounterState
     
     var body: some View {
         VStack {
             Text("Display Area")
                 .font(.headline)
-            Text("\(counter.count)")
+            Text("\(state.count)")
                 .font(.system(size: 60, weight: .bold))
-                .foregroundColor(counter.count >= 0 ? .blue : .red)
+                .foregroundColor(state.count >= 0 ? .blue : .red)
         }
         .padding()
         .randomBackground() // 🎨 再描画されると背景色が変わる

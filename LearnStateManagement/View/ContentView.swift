@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var counter = CounterViewModel()
+    init() {
+        let state = CounterState()
+        self._state = StateObject(wrappedValue: state)
+        self.viewModel = CounterViewModel(state: state)
+    }
+
+    @StateObject private var state = CounterState()
+    private var viewModel: CounterViewModel
     
     var body: some View {
         VStack(spacing: 20) {
@@ -16,9 +23,9 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
-            CounterDisplayView(counter: counter)
-            CounterControlsView(counter: counter)
-            HistoryView(counter: counter)
+            CounterDisplayView(state: state)
+            CounterControlsView(viewModel: viewModel)
+            HistoryView(state: state)
         }
         .padding()
     }
