@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @ObservedObject var counter: CounterViewModel
+    @ObservedObject var state: CounterState
     
     var body: some View {
         VStack {
@@ -16,7 +16,7 @@ struct HistoryView: View {
                 .font(.headline)
             
             ScrollView {
-                ForEach(counter.history, id: \.self) { item in
+                ForEach(state.history, id: \.self) { item in
                     Text(item)
                         .font(.caption)
                         .foregroundColor(.secondary)

@@ -7,41 +7,46 @@
 
 import Foundation
 
-class CounterViewModel: ObservableObject {
-    @Published var count: Int = 0
-    @Published var history: [String] = []
+class CounterViewModel {
+    
+    init(state: CounterState) {
+        self.state = state
+    }
     
     func increment() {
-        count += 1
-        addToHistory("Count up: \(count)")
+        state.count += 1
+        addToHistory("Count up: \(state.count)")
     }
     
     func decrement() {
-        count -= 1
-        addToHistory("Count down: \(count)")
+        state.count -= 1
+        addToHistory("Count down: \(state.count)")
     }
     
     // New method to increment count without affecting history
     func incrementCountOnly() {
-        count += 1
+        state.count += 1
     }
     
     // New method to decrement count without affecting history
     func decrementCountOnly() {
-        count -= 1
+        state.count -= 1
     }
     
     func reset() {
-        count = 0
-        history.removeAll()
+        state.count = 0
+        state.history.removeAll()
     }
     
+    // MARK: - Private
     private func addToHistory(_ action: String) {
         let timeStamp = Date().formatted(date: .omitted, time: .shortened)
-        history.insert("\(timeStamp): \(action)", at: 0)
+        state.history.insert("\(timeStamp): \(action)", at: 0)
         
-        if history.count > 5 {
-            history.removeLast()
+        if state.history.count > 5 {
+            state.history.removeLast()
         }
     }
+    
+    private let state: CounterState
 }
