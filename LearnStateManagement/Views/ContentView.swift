@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("全てのViewがリビルド")
+            Text("All Views Rebuild")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             

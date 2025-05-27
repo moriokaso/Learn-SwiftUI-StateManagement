@@ -12,7 +12,7 @@ struct CounterControlsView: View {
     
     var body: some View {
         VStack(spacing: 15) {
-            Text("操作エリア")
+            Text("Control Area")
                 .font(.headline)
             
             HStack(spacing: 20) {

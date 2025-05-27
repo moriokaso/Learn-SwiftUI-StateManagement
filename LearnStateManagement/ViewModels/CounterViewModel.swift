@@ -13,12 +13,12 @@ class CounterViewModel: ObservableObject {
     
     func increment() {
         count += 1
-        addToHistory("カウントアップ: \(count)")
+        addToHistory("Count up: \(count)")
     }
     
     func decrement() {
         count -= 1
-        addToHistory("カウントダウン: \(count)")
+        addToHistory("Count down: \(count)")
     }
     
     // New method to increment count without affecting history

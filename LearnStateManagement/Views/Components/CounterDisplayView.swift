@@ -12,7 +12,7 @@ struct CounterDisplayView: View {
     
     var body: some View {
         VStack {
-            Text("表示エリア")
+            Text("Display Area")
                 .font(.headline)
             Text("\(counter.count)")
                 .font(.system(size: 60, weight: .bold))

@@ -12,7 +12,7 @@ struct HistoryView: View {
     
     var body: some View {
         VStack {
-            Text("履歴エリア")
+            Text("History Area")
                 .font(.headline)
             
             ScrollView {
