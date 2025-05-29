@@ -5,48 +5,43 @@
 //  Created by morioka.so on 2025/05/26.
 //
 
-import Foundation
+import SwiftUI
 
 class CounterViewModel {
-    
-    init(state: CounterState) {
-        self.state = state
-    }
-    
+    @ObservedObject var model = CounterModel()
+
     func increment() {
-        state.count += 1
-        addToHistory("Count up: \(state.count)")
+        model.count += 1
+        addToHistory("Count up: \(model.count)")
     }
     
     func decrement() {
-        state.count -= 1
-        addToHistory("Count down: \(state.count)")
+        model.count -= 1
+        addToHistory("Count down: \(model.count)")
     }
     
     // New method to increment count without affecting history
     func incrementCountOnly() {
-        state.count += 1
+        model.count += 1
     }
     
     // New method to decrement count without affecting history
     func decrementCountOnly() {
-        state.count -= 1
+        model.count -= 1
     }
     
     func reset() {
-        state.count = 0
-        state.history.removeAll()
+        model.count = 0
+        model.history.removeAll()
     }
     
     // MARK: - Private
     private func addToHistory(_ action: String) {
         let timeStamp = Date().formatted(date: .omitted, time: .shortened)
-        state.history.insert("\(timeStamp): \(action)", at: 0)
+        model.history.insert("\(timeStamp): \(action)", at: 0)
         
-        if state.history.count > 5 {
-            state.history.removeLast()
+        if model.history.count > 5 {
+            model.history.removeLast()
         }
     }
-    
-    private let state: CounterState
 }
